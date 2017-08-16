@@ -10,16 +10,14 @@ enable :sessions
   end
 
   post '/names' do
-    session[@player1]
-    session[@player2]
+    session[:player1] = params[:player1]
+    session[:player2] = params[:player2]
     redirect '/play'
-  	# @player1 = params[:player1]
-  	# @player2 = params[:player2]
   end 
 
   get '/play' do
-    @player1
-    @player2
+    @player1 = session[:player1]
+    @player2 = session[:player2]
     erb(:play)
   end
   
